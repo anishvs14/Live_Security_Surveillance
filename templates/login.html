@@ -1,0 +1,21 @@
+<!DOCTYPE html><html><head>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Login</title>
+</head><body class="min-h-screen flex items-center justify-center bg-black">
+  <form method="post" class="bg-zinc-900 border border-red-600 p-8 rounded-lg shadow-lg w-80 relative">
+    <div class="absolute -top-8 left-1/2 -translate-x-1/2 flex items-center space-x-2">
+      <svg class="w-6 h-6 text-red-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9 4.03-9 9-9 9 4.03 9 9z"/></svg>
+      <span class="text-red-600 font-bold text-base tracking-widest">WeLcOmE</span>
+    </div>
+    <h2 class="text-2xl text-white mb-4 font-bold text-center mt-4">Login</h2>
+    {% with messages = get_flashed_messages(category_filter=['error']) %}
+      {% if messages %}<p class="text-red-400 font-semibold text-center">{{ messages[0] }}</p>{% endif %}
+    {% endwith %}
+    <input name="username" placeholder="Username" class="w-full p-2 mb-3 rounded bg-zinc-800 text-white border border-zinc-700 focus:outline-none focus:ring-2 focus:ring-red-600" />
+    <input name="password" type="password" placeholder="Password" class="w-full p-2 mb-4 rounded bg-zinc-800 text-white border border-zinc-700 focus:outline-none focus:ring-2 focus:ring-red-600" />
+    <button type="submit" class="w-full bg-red-600 hover:bg-red-700 text-white py-2 rounded font-bold text-base shadow transition-all">Log In</button>
+    <p class="mt-4 text-xs text-center text-zinc-400">No account? 
+      <a href="{{ url_for('register') }}" class="text-red-400 hover:text-red-600 font-bold underline">Register here</a>
+    </p>      
+  </form>
+</body></html>

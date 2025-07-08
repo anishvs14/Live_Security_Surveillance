@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head><title>Security Surveillance</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="min-h-screen" style="background: linear-gradient(135deg, #0a2a43, #1e3a5f);">
+  <nav class="flex items-center justify-between p-4 bg-white shadow-lg">
+    <div class="flex items-center">
+      <span class="text-2xl font-extrabold select-none">
+        <span class="text-blue-600">Zyp</span><span class="text-green-500">Eye</span>
+      </span>
+    </div>
+    <div class="flex items-center space-x-6">
+      <a href="/" class="font-bold text-black hover:text-green-600 transition-colors flex items-center h-full">Live</a>
+      <a href="/upload" class="font-bold text-black hover:text-green-600 transition-colors flex items-center h-full">Upload</a>
+      <a href="/logout" class="font-bold text-black hover:text-green-600 transition-colors bg-gradient-to-r from-green-400 to-green-600 hover:from-green-500 hover:to-green-700 px-4 py-2 rounded shadow transition-all ml-4">Logout</a>
+    </div>
+  </nav>
+  <div class="flex flex-col items-center justify-center py-8">
+    <h1 class="text-4xl font-extrabold mb-6 bg-gradient-to-r from-yellow-300 via-pink-400 to-purple-500 bg-clip-text text-transparent drop-shadow-lg">Live Surveillance</h1>
+    <!-- Toggle button -->
+    <div class="p-0 bg-transparent rounded-none shadow-none w-full min-h-[800px] flex flex-col items-center justify-center">
+      <button id="toggle-camera" class="mb-4 bg-gradient-to-r from-green-400 to-green-600 hover:from-green-500 hover:to-green-700 px-6 py-2 rounded-lg shadow-lg font-bold text-lg transition-all z-10">Turn Camera Off</button>
+      <div class="border-4 border-blue-700 rounded-xl overflow-hidden shadow-lg w-full min-h-[800px] flex items-center justify-center">
+        <img id="video-stream" src="{{ url_for('video_feed') }}" class="w-full min-h-[800px] object-cover" />
+      </div>
+      <div id="alert" class="mt-6 text-green-200 text-xl font-semibold min-h-[2rem] text-center"></div>
+    </div>
+  </div>
+  <script>
+    // poll for face alerts
+    setInterval(async () => {
+      let res = await fetch('/get_alert');
+      let { alert } = await res.json();
+      document.getElementById('alert').innerText = alert||'';
+    }, 1000);
+    // Camera toggle logic
+    const btn = document.getElementById('toggle-camera');
+    btn.addEventListener('click', async () => {
+      let res = await fetch('/toggle_camera', { method: 'POST' });
+      let { camera_on } = await res.json();
+      btn.innerText = camera_on ? 'Turn Camera Off' : 'Turn Camera On';
+      // reload the <img> so it picks up placeholder vs real feed
+      const img = document.getElementById('video-stream');
+      img.src = "{{ url_for('video_feed') }}" + "?t=" + new Date().getTime();
+    });
+  </script>
+</body>
+</html>
