@@ -1,4 +1,6 @@
-streamlit
-pandas
+Flask
+opencv-python
 numpy
-matplotlib
+ultralytics
+deepface
+Werkzeug
