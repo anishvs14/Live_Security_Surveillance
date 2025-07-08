@@ -89,12 +89,12 @@ Embeddings: Stored as .npy files inside the embeddings/ folder.
 
 ## 📷 Screenshots
 ![image](https://github.com/user-attachments/assets/f1025089-3141-403b-8f28-1668c2b504e6)
-                  Login page
+Login page
 ![image](https://github.com/user-attachments/assets/372f5852-07d7-4e5a-9322-5deebefbfa4b)<br>
-               Weapon Detection
+Weapon Detection
 ![image](https://github.com/user-attachments/assets/d5783b4b-7cf3-4ab6-be8d-9f67b34a5d7d)<br>
-              Accident Detection
+Accident Detection
 ![image](https://github.com/user-attachments/assets/5e27e2c6-a8f0-449d-8dbb-2e7bc5997641)
-            Upload Images of People
+Upload Images of People
 ![Screenshot 2025-07-08 154311](https://github.com/user-attachments/assets/c428a332-3953-46da-bbf7-223a80e1dab1)<br>
-              Facial Recognition
+Facial Recognition
