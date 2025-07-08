@@ -1,0 +1,17 @@
+# Ignore virtual environment
+venv/
+
+# Byte-compiled / cache
+__pycache__/
+*.py[cod]
+
+# Ignore SQLite or DB files if not needed
+*.db
+users
+
+# Jupyter or notebook checkpoints
+.ipynb_checkpoints
+
+# Ignore system files
+.DS_Store
+Thumbs.db
